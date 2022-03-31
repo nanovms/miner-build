@@ -1,0 +1,35 @@
+{
+    "Program": "usr/local/lib/erlang/erts-11.0/bin/erlexec",
+    "Version": "<MINER_RELEASE>-<MINER_PKG_VER>",
+    "RunConfig": {
+        "Memory": "2G"
+    },
+    "Env": {
+        "USER": "root",
+        "LD_LIBRARY_PATH": "/usr/local/lib/erlang/erts-11.0/lib:",
+        "HOME": "/root",
+        "RELEASE_PROG": "/bin/miner",
+        "EMU": "beam",
+        "PROGNAME": "/bin/miner",
+        "LC_TERMINAL_VERSION": "3.5.0beta4",
+        "REL_NAME": "miner",
+        "BINDIR": "/usr/local/lib/erlang/erts-11.0/bin",
+        "LOGNAME": "root",
+        "TERM": "screen",
+        "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "RELEASE_VSN": "<MINER_RELEASE>",
+        "RELX_RPC_TIMEOUT": "60",
+        "LANG": "en_US.UTF-8",
+        "RELEASE_NAME": "miner",
+        "ROOTDIR": "/",
+        "RUN_ERL_DISABLE_FLOWCNTRL": "true",
+        "PWD": "/",
+        "ESCRIPT_NAME": "/bin/miner"
+    },
+    "BaseVolumeSz": "3g",
+    "Args": ["usr/local/lib/erlang/erts-11.0/bin/erlexec", "-noinput", "+Bd", "-boot",
+             "/releases/<MINER_RELEASE>/start", "-mode", "embedded", "-boot_var", "SYSTEM_LIB_DIR", "/lib",
+             "-config", "/releases/<MINER_RELEASE>/sys.config",
+             "-args_file", "/releases/<MINER_RELEASE>/vm.args",
+             "--", "foreground"]
+}

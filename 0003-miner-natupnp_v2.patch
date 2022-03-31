@@ -1,0 +1,13 @@
+diff --git a/src/natupnp_v2.erl b/src/natupnp_v2.erl
+index e6ff77e..1a8faae 100644
+--- a/src/natupnp_v2.erl
++++ b/src/natupnp_v2.erl
+@@ -81,7 +81,7 @@ discover1(Sock, MSearch, Tries) ->
+           Error
+       end;
+     error ->
+-      discover1(Sock, MSearch, Tries - 1)
++      discover1(Sock, MSearch, Tries+1)
+   end.
+ 
+ discover_loop(Sock, Timeout) ->

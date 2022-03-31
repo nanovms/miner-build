@@ -1,0 +1,14 @@
+diff --git a/src/libp2p_transport_tcp.erl b/src/libp2p_transport_tcp.erl
+index 6aef919..87d0f07 100644
+--- a/src/libp2p_transport_tcp.erl
++++ b/src/libp2p_transport_tcp.erl
+@@ -834,6 +834,8 @@ reuseport() ->
+     {Protocol, Option} = case os:type() of
+                              {unix, linux} ->
+                                  {1, 15};
++                             {unix, nanos} ->
++                                 {1, 15};
+                              {unix, freebsd} ->
+                                  {16#ffff, 16#200};
+                              {unix, darwin} ->
+

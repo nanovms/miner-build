@@ -1,0 +1,10 @@
+Helium Miner validator - git tag <MINER_RELEASE>
+---------------------------------------------
+
+This starts an instance of the Helium Miner test_validator, built from sources
+derived from https://github.com/helium/miner.git (tag <MINER_RELEASE>).
+
+To enable the validator to join the p2p network, you will need to configure
+your firewall to make TCP ports 2154 and 8080 accessible from the outside
+world.
+

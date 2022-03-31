@@ -1,0 +1,79 @@
+diff --git a/config/sys.config b/config/sys.config
+index 906cee97..622b2593 100644
+--- a/config/sys.config
++++ b/config/sys.config
+@@ -3,7 +3,7 @@
+  {kernel,
+   [
+    %% force distributed erlang to only run on localhost
+-   {inet_dist_use_interface, {127,0,0,1}}
++   {inet_dist_use_interface, {0,0,0,0}}
+   ]},
+  {lager,
+   [
+@@ -51,7 +51,7 @@
+    {blessed_snapshot_block_hash,
+     <<114,177,177,98,217,154,188,18,212,229,36,77,57,49,35,131,227,60,157,115,47,34,29,59,241,63,24,152,221,198,197,5>>},
+    {listen_addresses, ["/ip4/0.0.0.0/tcp/44158"]},
+-   {key, {ecc, [{key_slot, 0}, {onboarding_key_slot, 15}, {bus, "i2c-1"}, {address, 16#60}]}}, %% don't make this the last line in the stanza because sed and keep it on one line
++   {key, undefined},
+    {base_dir, "/var/data"},
+    {onboarding_dir, "/mnt/uboot"},
+    {num_consensus_members, 16},
+@@ -98,10 +98,10 @@
+    {denylist_keys, ["1SbEYKju337P6aYsRd9DT2k4qgK5ZK62kXbSvnJgqeaxK3hqQrYURZjL"]},
+    {denylist_type, github_release},
+    {denylist_url, "https://api.github.com/repos/helium/denylist/releases/latest"},
+-   {jsonrpc_ip, {127,0,0,1}}, %% bind JSONRPC to localhost only
++   {jsonrpc_ip, {0,0,0,0}}, %% bind JSONRPC to host
+    {jsonrpc_port, 4467},
+    {mode, gateway},
+-   {use_ebus, true},
++   {use_ebus, false},
+    {batch_size, 2500},
+    {curve, 'SS512'},
+    {block_time, 60000},
+@@ -110,8 +110,8 @@
+    {update_dir, "/opt/miner/update"},
+    {api_base_url, "https://api.helium.io/v1"},
+    {election_interval, 30},
+-   {radio_device, { {127,0,0,1}, 1680,
+-                    {127,0,0,1}, 31341} },
++   {radio_device, { {0,0,0,0}, 1680,
++                    {0,0,0,0}, 31341} },
+    {default_routers, ["/p2p/11w77YQLhgUt8HUJrMtntGGr97RyXmot1ofs5Ct2ELTmbFoYsQa","/p2p/11afuQSrmk52mgxLu91AdtDXbJ9wmqWBUxC3hvjejoXkxEZfPvY"]},
+    {mark_mods, [miner_hbbft_handler]},
+    {stabilization_period, 50000},
+diff --git a/config/vm.args b/config/vm.args
+index 63105bb0..2ae7143d 100644
+--- a/config/vm.args
++++ b/config/vm.args
+@@ -1,5 +1,5 @@
+ ## Name of the node
+--name {{release_name}}@127.0.0.1
++-name {{release_name}}@%en1
+ 
+ ## Cookie for distributed erlang
+ -setcookie {{release_name}}
+diff --git a/config/vm_dev.args b/config/vm_dev.args
+index a19a2ed9..a59603e2 100644
+--- a/config/vm_dev.args
++++ b/config/vm_dev.args
+@@ -1,5 +1,5 @@
+ ## Name of the node
+--name {{release_name}}@127.0.0.1
++-name {{release_name}}@%en1
+ 
+ ## Cookie for distributed erlang
+ -setcookie miner
+diff --git a/config/vm_val.args b/config/vm_val.args
+index d048916f..5544f893 100644
+--- a/config/vm_val.args
++++ b/config/vm_val.args
+@@ -1,5 +1,5 @@
+ ## Name of the node
+--name val_{{release_name}}@127.0.0.1
++-name val_{{release_name}}@%en1
+ 
+ ## Cookie for distributed erlang
+ -setcookie {{release_name}}
